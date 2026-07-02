@@ -1,59 +1,51 @@
-# Frontend
+# Просмотр документов с аннотациями
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.4.
+В проекте реализован просмотр документа по страницам с возможностью добавлять текстовые аннотации поверх страницы.
 
-## Development server
+## Плюсы реализации
 
-To start a local development server, run:
+- Аннотации поверх документа позволяют работать с материалом без изменения исходного файла.
+- Пользователь видит комментарии в контексте конкретного места на странице.
+- Такой подход подходит для ревью, согласования, проверки и совместной работы с документами.
+- Можно постепенно расширять набор инструментов: текст, выделение, маркеры, подписи, области.
+- Данные аннотаций можно хранить отдельно от документа и применять к разным версиям или копиям.
 
-```bash
-ng serve
-```
+## Минусы реализации
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Аннотации зависят от стабильности разметки и размеров страницы: при изменении документа позиции могут смещаться.
+- Нужно отдельно решать хранение, синхронизацию и права доступа к аннотациям.
+- При большом количестве аннотаций страница может стать визуально перегруженной.
+- Для совместной работы нужны история изменений, авторство, конфликты и актуальное состояние данных.
+- Разные типы документов и устройств требуют дополнительной проверки точности позиционирования.
 
-## Code scaffolding
+## Известные проблемы и способы решения
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Аннотации не сохраняются
 
-```bash
-ng generate component component-name
-```
+Сейчас сохранение работает как демонстрационное действие.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Решение: подключить сохранение на сервере и загружать сохраненные аннотации вместе с документом.
 
-```bash
-ng generate --help
-```
+### Аннотации могут сместиться при замене изображения страницы
 
-## Building
+Если заменить страницу на изображение с другим размером или пропорциями, старые аннотации могут визуально оказаться не там, где были.
 
-To build the project run:
+Решение: хранить исходные размеры страницы и привязывать позиции аннотаций к ним.
 
-```bash
-ng build
-```
+### Длинный текст неудобно редактировать
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Сейчас поле аннотации ограничено по размеру.
 
-## Running unit tests
+Решение: добавить прокрутку внутри текста или возможность менять размер аннотации.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Нельзя отменить случайное удаление или перемещение
 
-```bash
-ng test
-```
+Если пользователь удалил или сдвинул аннотацию, быстрого отката нет.
 
-## Running end-to-end tests
+Решение: добавить простую историю действий с возможностью `Undo`.
 
-For end-to-end (e2e) testing, run:
+### Есть только один тип аннотаций
 
-```bash
-ng e2e
-```
+Сейчас можно добавлять только текст.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Решение: при необходимости добавить другие типы: выделение области, комментарий, подпись или маркер.
