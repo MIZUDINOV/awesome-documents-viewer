@@ -1,4 +1,4 @@
-import { DecimalPipe, PercentPipe } from '@angular/common';
+import { PercentPipe } from '@angular/common';
 import { Component, input, output } from '@angular/core';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -16,4 +16,5 @@ export class ViewerToolbar {
 
   public readonly zoomIn = output<void>();
   public readonly zoomOut = output<void>();
+  public readonly save = output<void>();
 }

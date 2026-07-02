@@ -7,5 +7,5 @@
     <span>{{ zoom() | percent: '1.0-0' }}</span>
   </div>
 
-  <button matButton="filled">Сохранить</button>
+  <button matButton="filled" (click)="save.emit()">Сохранить</button>
 </mat-toolbar>

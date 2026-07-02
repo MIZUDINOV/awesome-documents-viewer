@@ -49,6 +49,14 @@ export class DocumentViewer {
     this.zoom.update((value) => Math.max(value - ZOOM_STEP, MIN_ZOOM));
   }
 
+  protected saveDocument(): void {
+    console.log({
+      documentId: this.documentId(),
+      document: this.document.value(),
+      annotations: this.annotations(),
+    });
+  }
+
   protected onAddAnnotation(annotation: Annotation): void {
     this.updatePageAnnotations(annotation.pageNumber, (annotations) => [...annotations, annotation]);
   }
