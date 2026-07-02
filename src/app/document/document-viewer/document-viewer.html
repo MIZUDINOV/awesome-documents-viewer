@@ -1,0 +1,12 @@
+<app-viewer-toolbar
+  [documentName]="documentName()"
+  [zoom]="zoom()"
+  (zoomIn)="zoomIn()"
+  (zoomOut)="zoomOut()"
+/>
+
+<main>
+  @for (page of pages(); track page.number) {
+    <app-document-page [page]="page" [pageWidth]="pageWidth()" />
+  }
+</main>

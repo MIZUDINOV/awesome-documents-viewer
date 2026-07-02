@@ -1,0 +1,11 @@
+<mat-toolbar>
+  <h3>{{ documentName() }}</h3>
+
+  <div class="zoom-controls">
+    <button matIconButton (click)="zoomIn.emit()"><mat-icon>zoom_in</mat-icon></button>
+    <button matIconButton (click)="zoomOut.emit()"><mat-icon>zoom_out</mat-icon></button>
+    <span>{{ zoom() | percent: '1.0-0' }}</span>
+  </div>
+
+  <button matButton="filled">Сохранить</button>
+</mat-toolbar>
