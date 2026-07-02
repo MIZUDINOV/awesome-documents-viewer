@@ -1,0 +1,14 @@
+<div class="annotation-layer" (pointerdown)="onLayerPointerDown($event)" (click)="onLayerClick($event)">
+  @for (annotation of pageAnnotations(); track annotation.id) {
+    @switch (annotation.type) {
+      @case ('text') {
+        <app-text-annotation
+          [annotation]="annotation"
+          (deleteAnnotation)="onRemoveAnnotation(annotation)"
+          (updateAnnotation)="onUpdateAnnotation($event)"
+          (moveAnnotation)="moveAnnotation.emit($event)"
+        />
+      }
+    }
+  }
+</div>

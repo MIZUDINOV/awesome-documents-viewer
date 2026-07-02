@@ -1,0 +1,36 @@
+<div
+  class="text-annotation"
+  [style.left.%]="currentX() * 100"
+  [style.top.%]="currentY() * 100"
+  (pointerdown)="onPointerDown($event)"
+  (pointermove)="onPointerMove($event)"
+  (pointerup)="onPointerUp($event)"
+  (pointercancel)="onPointerCancel($event)"
+>
+  @if (annotation().text === '') {
+    <textarea
+      #textInput
+      class="text-annotation__input"
+      rows="1"
+      (click)="$event.stopPropagation()"
+      (pointerdown)="$event.stopPropagation()"
+      (input)="resizeTextArea($event)"
+      (blur)="saveText(textInput.value)"
+      (keydown)="onTextKeydown($event)"
+    ></textarea>
+  } @else {
+    <span class="text-annotation__text">
+      {{ annotation().text }}
+    </span>
+
+    <button
+      matIconButton
+      type="button"
+      class="text-annotation__delete"
+      (pointerdown)="$event.stopPropagation()"
+      (click)="onDeleteClick($event)"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  }
+</div>

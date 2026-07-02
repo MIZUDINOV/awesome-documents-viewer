@@ -1,8 +1,18 @@
-<section class="page" [style.width.px]="pageWidth()">
+<section class="page" [style.width.px]="pageWidth()" [style.--viewer-zoom]="zoom()">
   <img
     class="page-img"
     [src]="page().imageUrl"
     [alt]="'Page ' + page().number"
     [draggable]="false"
+  />
+
+  <app-annotation-layer
+    [annotations]="annotations()"
+    [pageNumber]="page().number"
+    [zoom]="zoom()"
+    (addAnnotation)="addAnnotation.emit($event)"
+    (updateAnnotation)="updateAnnotation.emit($event)"
+    (moveAnnotation)="moveAnnotation.emit($event)"
+    (removeAnnotation)="removeAnnotation.emit($event)"
   />
 </section>

@@ -1,0 +1,9 @@
+:host {
+  position: absolute;
+  inset: 0;
+}
+
+.annotation-layer {
+  position: absolute;
+  inset: 0;
+}

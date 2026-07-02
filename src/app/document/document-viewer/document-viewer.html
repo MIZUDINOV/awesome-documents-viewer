@@ -7,6 +7,15 @@
 
 <main>
   @for (page of pages(); track page.number) {
-    <app-document-page [page]="page" [pageWidth]="pageWidth()" />
+    <app-document-page
+      [page]="page"
+      [annotations]="annotations()"
+      [pageWidth]="pageWidth()"
+      [zoom]="zoom()"
+      (addAnnotation)="onAddAnnotation($event)"
+      (updateAnnotation)="onUpdateAnnotation($event)"
+      (moveAnnotation)="onMoveAnnotation($event)"
+      (removeAnnotation)="onRemoveAnnotation($event)"
+    />
   }
 </main>

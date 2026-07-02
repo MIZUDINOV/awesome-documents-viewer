@@ -1,0 +1,56 @@
+.text-annotation {
+  position: absolute;
+  width: calc(240px * var(--viewer-zoom, 1));
+  box-sizing: border-box;
+  padding: calc(6px * var(--viewer-zoom, 1)) calc(8px * var(--viewer-zoom, 1));
+  border: calc(1px * var(--viewer-zoom, 1)) solid rgb(202 138 4 / 70%);
+  border-radius: calc(4px * var(--viewer-zoom, 1));
+  background: rgb(250 204 21 / 38%);
+  cursor: move;
+  font-size: calc(14px * var(--viewer-zoom, 1));
+  line-height: calc(20px * var(--viewer-zoom, 1));
+  user-select: none;
+}
+
+.text-annotation__text {
+  display: block;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.text-annotation__input {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: calc(20px * var(--viewer-zoom, 1));
+  max-height: calc(220px * var(--viewer-zoom, 1));
+  border: 0;
+  outline: 0;
+  overflow: hidden;
+  resize: none;
+  background: transparent;
+  font: inherit;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.text-annotation__delete {
+  position: absolute;
+  top: calc(-18px * var(--viewer-zoom, 1));
+  left: calc(-18px * var(--viewer-zoom, 1));
+  width: calc(28px * var(--viewer-zoom, 1));
+  height: calc(28px * var(--viewer-zoom, 1));
+  --mdc-icon-button-state-layer-size: calc(28px * var(--viewer-zoom, 1));
+  padding: 0;
+  background: #fff;
+  color: #b91c1c;
+  box-shadow:
+    0 calc(1px * var(--viewer-zoom, 1)) calc(4px * var(--viewer-zoom, 1))
+    rgb(0 0 0 / 20%);
+}
+
+.text-annotation__delete mat-icon {
+  width: calc(18px * var(--viewer-zoom, 1));
+  height: calc(18px * var(--viewer-zoom, 1));
+  font-size: calc(18px * var(--viewer-zoom, 1));
+  line-height: calc(18px * var(--viewer-zoom, 1));
+}
