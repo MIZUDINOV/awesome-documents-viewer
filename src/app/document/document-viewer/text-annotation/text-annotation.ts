@@ -12,6 +12,7 @@ interface DragState {
   pageWidth: number;
   pageHeight: number;
   annotationWidth: number;
+  annotationHeight: number;
 }
 
 @Component({
@@ -76,6 +77,7 @@ export class TextAnnotation {
       pageWidth: pageRect.width,
       pageHeight: pageRect.height,
       annotationWidth: element.offsetWidth,
+      annotationHeight: element.offsetHeight,
     };
   }
 
@@ -159,10 +161,11 @@ export class TextAnnotation {
     const dy = event.clientY - this.dragState.startClientY;
 
     const maxX = Math.max(0, 1 - this.dragState.annotationWidth / this.dragState.pageWidth);
+    const maxY = Math.max(0, 1 - this.dragState.annotationHeight / this.dragState.pageHeight);
 
     return {
       x: clamp(this.dragState.startX + dx / this.dragState.pageWidth, maxX),
-      y: clamp(this.dragState.startY + dy / this.dragState.pageHeight),
+      y: clamp(this.dragState.startY + dy / this.dragState.pageHeight, maxY),
     };
   }
 

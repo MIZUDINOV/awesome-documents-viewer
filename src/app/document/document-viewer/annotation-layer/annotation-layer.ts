@@ -3,6 +3,7 @@ import { Annotation, MoveAnnotation, TextAnnotationType } from '../../annotation
 import { TextAnnotation } from '../text-annotation/text-annotation';
 
 const MAX_TEXT_ANNOTATION_WIDTH = 240;
+const MIN_TEXT_ANNOTATION_HEIGHT = 34;
 
 @Component({
   selector: 'app-annotation-layer',
@@ -44,8 +45,9 @@ export class AnnotationLayer {
     const rect = layer.getBoundingClientRect();
 
     const maxX = Math.max(0, 1 - (MAX_TEXT_ANNOTATION_WIDTH * this.zoom()) / rect.width);
+    const maxY = Math.max(0, 1 - (MIN_TEXT_ANNOTATION_HEIGHT * this.zoom()) / rect.height);
     const x = clamp((event.clientX - rect.left) / rect.width, maxX);
-    const y = clamp((event.clientY - rect.top) / rect.height);
+    const y = clamp((event.clientY - rect.top) / rect.height, maxY);
 
     this.addAnnotation.emit({
       id: crypto.randomUUID(),
