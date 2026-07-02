@@ -1,16 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { Observable } from 'rxjs';
-
-export interface Document {
-  name: string;
-  pages: Page[];
-}
-
-export interface Page {
-  number: number;
-  imageUrl: `pages/${number}.png`;
-}
+import { Document } from './document';
 
 @Service()
 export class DocumentApi {

@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { Page } from '../../document-api';
+import { Page } from '../../document';
 import { Annotation, MoveAnnotation, TextAnnotationType } from '../../annotation';
 import { AnnotationLayer } from '../annotation-layer/annotation-layer';
 
